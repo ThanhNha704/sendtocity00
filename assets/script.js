@@ -5,25 +5,37 @@ document.addEventListener("DOMContentLoaded", function () {
     let sizepN = document.querySelector(".pN");
     let sizepY = document.querySelector(".pY");
     let left = yesBtn.getBoundingClientRect().left;
+    let count = 0;
 
     noBtn.addEventListener("click", function () {
-        let noWidth = noBtn.offsetWidth;
-        let noHeight = noBtn.offsetHeight;
-        let yesWidth = yesBtn.offsetWidth;
-        let yesHeight = yesBtn.offsetHeight;
-        let choiceHeight = choice.offsetHeight;
-        const fontsizepN = parseFloat(window.getComputedStyle(sizepN).fontSize) - 1;
-        const fontsizepY = parseFloat(window.getComputedStyle(sizepY).fontSize) + 1;
+        if (count <= 1) {
+            count = count + 1;
+            let noWidth = noBtn.offsetWidth;
+            let noHeight = noBtn.offsetHeight;
+            let yesWidth = yesBtn.offsetWidth;
+            let yesHeight = yesBtn.offsetHeight;
+            let choiceHeight = choice.offsetHeight;
+            let choiceWidth = choice.offsetWidth;
+            const fontsizepN = parseFloat(window.getComputedStyle(sizepN).fontSize);
+            const fontsizepY = parseFloat(window.getComputedStyle(sizepY).fontSize);
 
-        noBtn.style.width = (noWidth - 2) + "px";
-        noBtn.style.height = (noHeight - 2) + "px";
-        yesBtn.style.width = (yesWidth * 2) + "px";
-        yesBtn.style.height = (yesHeight * 2) + "px";
-        choice.style.height = (choiceHeight * 2 - yesHeight) + "px";
-        sizepN.style.fontSize = fontsizepN + "px";
-        sizepY.style.fontSize = fontsizepY + "px";
-
-        yesBtn.style.left = (left + 10);
+            noBtn.style.width = (noWidth - 2) + "px";
+            noBtn.style.height = (noHeight - 2) + "px";
+            yesBtn.style.width = (yesWidth * 2) + "px";
+            yesBtn.style.height = (yesHeight * 2) + "px";
+            choice.style.height = (choiceHeight * 1.2) + "px";
+            choice.style.width = (choiceWidth * 1.3) + "px";
+            sizepN.style.fontSize = (fontsizepN - 2) + "px";
+            sizepY.style.fontSize = (fontsizepY + 2) + "px";
+        }
+        else {
+            maxWidth = document.documentElement.scrollWidth;
+            maxHeight = document.documentElement.scrollHeight;
+            yesBtn.style.width = maxWidth + "px";
+            yesBtn.style.height = maxHeight*2 + "px";
+            choice.style.width = maxWidth + "px";
+            choice.style.height = maxHeight + "px";
+        }
     });
 });
 

@@ -97,20 +97,22 @@ body {
 
 .choice {
     position: relative;
-    /* Để các nút không bị lệch */
-    min-height: 100px;
-    min-width: 300px;
+    height: 100px;
+    width: 300px;
+    /* max-height: 100px; */
+    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
     /* Tăng khoảng cách giữa các nút */
     margin: 25px 0 0 0;
 }
 
 button {
-    max-height: 1000px;
-    max-width: 1000px;
+    max-height: 1000%;
+    max-width: 1000%;
+    min-width: 0;
+    min-height: 0;
     border: none;
     padding: 10px 20px;
     border-radius: 45px;
@@ -118,9 +120,16 @@ button {
     font-size: 1.5rem;
     cursor: pointer;
     transition: transform 0.5s ease-in-out, background-color 0.3s ease;
+}
+.yesBtn{
+    position: absolute;
     z-index: 20;
 }
-
+.noBtn {
+    position: absolute;
+    right: 0px;
+    z-index: 19;
+}
 .yesBtn:hover {
     /* transform: scale(1.1) translateX(-120%); */
     background-color: var(--color-heart);
@@ -130,16 +139,6 @@ button {
     /* transform: scale(1.1) translateX(20%); */
     background-color: var(--color-heart);
 }
-
-/* .yesBtn,
-.noBtn {
-    position: absolute;
-    min-width: 100px;
-    min-height: 50px;
-    cursor: pointer;
-    z-index: 20;
-    transition: transform 0.5s ease-in-out;
-} */
 
 .pN,
 .pY {
