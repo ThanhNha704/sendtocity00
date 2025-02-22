@@ -1,0 +1,178 @@
+:root {
+    --color-heart: #F64C72;
+    --color-background: #E3AFBC;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    /* Sử dụng chiều cao toàn màn hình */
+    background-color: var(--color-background);
+    margin: 0;
+}
+
+.heart {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    transform: rotate(45deg);
+    background-color: var(--color-heart);
+    box-sizing: border-box;
+    display: inline-block;
+    animation: zoomInOutHeart 2s infinite;
+    transition: transform 1.5s ease-in-out, opacity 1.5s ease-in-out, ;
+    z-index: 1;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--color-heart);
+    box-sizing: border-box;
+}
+
+.heart::before {
+    top: -50%;
+}
+
+.heart::after {
+    left: -50%;
+}
+
+@keyframes zoomInOutHeart {
+    0% {
+        transform: scale(1) rotate(45deg);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(45deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(45deg);
+    }
+}
+
+@keyframes zoomInOutContent {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.content {
+    position: absolute;
+    top: calc(50% - 135px);
+    /* Giữ vị trí ổn định trên các màn hình */
+    z-index: 10;
+    animation: zoomInOutContent 2s infinite;
+}
+
+.content p {
+    margin: 0;
+    color: #FFF;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.choice {
+    position: relative;
+    /* Để các nút không bị lệch */
+    min-height: 100px;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    /* Tăng khoảng cách giữa các nút */
+    margin: 25px 0 0 0;
+}
+
+button {
+    max-height: 1000px;
+    max-width: 1000px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 45px;
+    background-color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, background-color 0.3s ease;
+    z-index: 20;
+}
+
+.yesBtn:hover {
+    /* transform: scale(1.1) translateX(-120%); */
+    background-color: var(--color-heart);
+}
+
+.noBtn:hover {
+    /* transform: scale(1.1) translateX(20%); */
+    background-color: var(--color-heart);
+}
+
+/* .yesBtn,
+.noBtn {
+    position: absolute;
+    min-width: 100px;
+    min-height: 50px;
+    cursor: pointer;
+    z-index: 20;
+    transition: transform 0.5s ease-in-out;
+} */
+
+.pN,
+.pY {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.noBtn {
+    transition: transform 0.5s ease-in-out, left 0.5s ease-in-out, top 0.5s ease-in-out;
+}
+
+.content_yes {
+    display: none;
+    position: absolute;
+    top: calc(50% - 100px);
+    text-align: center;
+    font-size: 3rem;
+    color: green;
+    margin-top: 50px;
+    font-weight: bold;
+    animation: fadeIn 1s ease-in-out;
+    z-index: 20;
+}
+
+/* Hiệu ứng xuất hiện mượt */
+@keyframes fadeIn {
+    from {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
